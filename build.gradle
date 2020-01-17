@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'bin.framework'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    maven
+    {
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.5.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha1'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '2.0.0-alpha1'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    runtime files('libs/ojdbc7.jar')
+}
