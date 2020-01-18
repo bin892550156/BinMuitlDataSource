@@ -62,7 +62,8 @@ public class DataSourceCilentNode {
     private String pingSql;
 
     /**
-     * 用于负载均衡的分类
+     * 指负载均衡组ID,同一个groupId的DataSourceCilentNode应该其对应的数据库，表结构，表数据都相同，以防止负载均衡操作时导致
+     * 的因不一致而抛出异常
      */
     private String groupId;
 

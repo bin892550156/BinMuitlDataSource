@@ -450,6 +450,7 @@ public class BinConnection implements Connection {
                     tasks) {
                 task.doTask(this);
             }
+            tasks.clear();
         }
     }
 

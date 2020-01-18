@@ -1,3 +1,17 @@
+#前言
+该项目属于我抱着学习的心态去做的项目，并没有受到专业的测试，不值得在生产中使用，仅仅供读者参考。如果想要用类似的功能，建议还是使用当当网的sharding-jdbc，赋上该官网https://shardingsphere.apache.org/document/current/cn/overview/。
+#简介
+这是负载均衡的跨驱动的解耦的连接池，它提供：
+1. 多个数据库查询操作的负载均衡
+2. 保证多个同类的数据库的更新操作的事务
+3. 跨数据库驱动,以及不同业务的数据库
+4. 高解耦，用户只需配置一下数据源，其他数据库的操作都无需再与本框架耦合。
+5. 自动检查失效的数据库连接池，并恢复该连接池的正常运行
+6. 可在Spring中直接通过注入的方式即可使用DataSource，或者将DataSource配置在JPA、Hibernate或MyBatis中使用。
+#具体流程
+![BinMuiltDataSource具体执行流程.png](https://upload-images.jianshu.io/upload_images/18292929-f0dbdae099062f29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+#实例
+```java
 package bin.framework.test;
 
 import bin.framework.BinMultiDataSource;
@@ -34,9 +48,9 @@ public class JdbcSingleDataSourceTest {
         DataSourceCilentNode ydddDataSourceCilentNode =new DataSourceCilentNode();
         ydddDataSourceCilentNode.setGroupId("2");
         ydddDataSourceCilentNode.setDriver("oracle.jdbc.driver.OracleDriver");
-        ydddDataSourceCilentNode.setUsername("yidongdudao");
-        ydddDataSourceCilentNode.setPassword("Ppzx147.");
-        ydddDataSourceCilentNode.setUrl("jdbc:oracle:thin:@172.16.19.125:1621/orcl");
+        ydddDataSourceCilentNode.setUsername("yddd");
+        ydddDataSourceCilentNode.setPassword("yddd123");
+      ydddDataSourceCilentNode.setUrl("jdbc:oracle:thin:@192.168.191.2:1621/orcl");
         binMultiDataSource=new BinMultiDataSource(Arrays.asList(binTestDataSourceCilentNode, ydddDataSourceCilentNode));
     }
 
@@ -152,3 +166,7 @@ public class JdbcSingleDataSourceTest {
         System.out.println("test_procedure : "+i);
     }
 }
+
+```
+#源码下载
+https://github.com/bin892550156/BinMuitlDataSource
